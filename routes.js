@@ -6,7 +6,7 @@ exports.endpoints = [
 	//auth
 	{
 		method: 'POST',
-		path: '/users/crear',
+		path: '/register',
 		config: usersController.createUser
 	},
 	{
