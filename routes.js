@@ -1,76 +1,76 @@
-var booksController = require('./controllers/booksController');
+var hechicerosController = require('./controllers/hechicerosController');
+var hechizosController = require('./controllers/hechizosController');
 var usersController = require('./controllers/usersController');
 
 exports.endpoints = [
-	{
-		method: 'GET',
-	 	path: '/books',
-	 	config: booksController.getBooks
- 	},
-	{
-		method: 'GET',
-		path: '/books/searchbyid/{id}',
-		config: booksController.getBookId
- 	},
-	{
-		method: 'GET',
-		path: '/books/searchbyname/{titulo}',
-		config: booksController.getBookName
- 	},
-	{
-		method: 'GET',
-		path: '/books/searchbygenre/{genero}',
-		config: booksController.getBookGenre
- 	},
-	{
-		method: 'GET',
-		path: '/books/searchbyauthor/{autor}',
-		config: booksController.getBookAuthor
- 	},
-	{
-		method: 'GET',
-		path: '/books/searchbykey', //FALTA HACER EJEMPLO POSTMAN
-		config: booksController.getBookKey
- 	},
-	{
-		method: 'GET',
-		path: '/books/borrowed',
-		config: booksController.getBookPrestado
- 	},
- 	{	
-		method: 'PUT',
-		path: '/books/update/{id}',
-		config: booksController.modifyBook
-
- 	},
-	{
-		method: 'PUT',
-		path: '/books/borrowbook/{id}',
-		config: booksController.putBookPrestado
- 	},
-	{
-		method: 'DELETE',
-		path: '/books/delete/{id}',
-		config: booksController.deleteBook
- 	},
+	//auth
 	{
 		method: 'POST',
-		path: '/books/create',
-		config: booksController.createBook
+		path: '/users/crear',
+		config: usersController.createUser
+	},
+	{
+		method: 'POST',
+		path: '/login',
+		config: usersController.login
+	},
+	{
+		method: 'PUT',
+		path: '/logout',
+		config: usersController.logout
+	},
+	//hechiceros
+	{
+		method: 'GET',
+	 	path: '/hechiceros',
+	 	config: hechicerosController.getHechiceros
  	},
- 	{
- 		method: 'POST',
- 		path: '/register',
- 		config: usersController.createUser
+	{
+		method: 'GET',
+		path: '/hechiceros/buscar/id/{id}',
+		config: hechicerosController.getHechiceroId
  	},
- 	{
- 		method: 'POST',
- 		path: '/login',
- 		config: usersController.login
+	{
+		method: 'GET',
+		path: '/hechiceros/buscar/username/{username}',
+		config: hechicerosController.getHechiceroByUser
  	},
  	{
  		method: 'PUT',
- 		path: '/logout',
- 		config: usersController.logout
+ 		path: '/hechiceros/modificar/{username}',
+ 		config: hechicerosController.modifyHechicero
+ 	},
+ 	{
+ 		method: 'POST',
+ 		path: '/hechiceros/crear',
+ 		config: hechicerosController.createHechicero
+ 	},
+ 	//hechizos
+ 	
+ 	{
+ 		method: 'POST',
+ 		path: '/hechizos/crear',
+ 		config: hechizosController.createHechizo
+ 	},
+ 	{
+ 		method: 'GET',
+ 		path: '/hechizos',
+ 		config: hechizosController.getHechizos
+ 	},
+ 	{
+ 		method: 'GET',
+ 		path: '/hechizos/{id}',
+ 		config: hechizosController.getHechizoId
+ 	},
+ 	{
+ 		method: 'GET',
+ 		path: '/hechizos/buscar/hechicero/{id}',
+ 		config: hechizosController.getHechizosByHechicero
+ 	},
+ 	{
+ 		method: 'PUT',
+ 		path: '/hechizos/modificar/{id}',
+ 		config: hechizosController.modifyHechizo
  	}
+
 ];
