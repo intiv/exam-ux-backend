@@ -3,11 +3,7 @@ var mongoose=require('mongoose');
 var boom = require('boom');
 
 exports.getHechizos = {
-  auth: {
-  	mode: 'required',
-  	strategy: 'session',
-  	scope: ['hechicero']
-  },
+  auth: false,
   handler: function(request, reply){
     var hechizos = hechizo.find({});
     reply(hechizos);
@@ -16,11 +12,7 @@ exports.getHechizos = {
 
 //Get one Hechizo by its id
 exports.getHechizoId = {
-  auth : {
-    mode: 'required',
-    strategy: 'session',
-    scope: ['hechicero']
-  },
+  auth : false,
   handler : function(request, reply){
     hechizo.findOne({'_id' : request.params.id}, function(err, Hechizo){
       if(!err && Hechizo){
@@ -36,11 +28,7 @@ exports.getHechizoId = {
 
 //Get one Hechizo by its name
 exports.getHechizosByHechicero = {
-  auth : {
-    mode: 'required',
-    strategy: 'session',
-    scope: ['hechicero']
-  },
+  auth : false,
   handler : function(request, reply){
     Hechizo.findOne({'id_hechicero' : request.params.id}, function(err, Hechizos){
       if(!err && Hechizos){
@@ -56,11 +44,7 @@ exports.getHechizosByHechicero = {
 
 //modificar Hechizo
 exports.modifyHechizo = {
-  auth : {
-    mode: 'required',
-    strategy: 'session',
-    scope: ['hechicero']
-  },
+  auth : false,
   handler: function(request, reply){
     hechizo.update(
       {'_id': request.params.id},
@@ -83,11 +67,7 @@ exports.modifyHechizo = {
 
 //Create a new Hechizo
 exports.createHechizo = {
-  auth : {
-    mode: 'required',
-    strategy: 'session',
-    scope: ['hechicero']
-  },
+  auth : false,
   handler: function(request, reply){
     var newHechizo = new hechizo({
       nombre : request.payload.nombre,

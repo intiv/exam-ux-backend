@@ -4,11 +4,7 @@ var boom=require('boom');
 
 //Get all wizards
 exports.getHechiceros = {
-  auth: {
-    mode: 'required',
-    strategy: 'session',
-    scope: ['hechicero']
-  },
+  auth: false,
   handler: function(request, reply){
     var hechiceros = hechicero.find({});
     reply(hechiceros);
@@ -17,11 +13,7 @@ exports.getHechiceros = {
 
 //Get one hechicero by its id
 exports.getHechiceroId = {
-  auth : {
-    mode: 'required',
-    strategy: 'session',
-    scope: ['hechicero']
-  },
+  auth : false,
   handler : function(request, reply){
     hechicero.findOne({'_id' : request.params.id}, function(err, Hechicero){
       if(!err && Hechicero){
@@ -37,11 +29,7 @@ exports.getHechiceroId = {
 
 //Get one hechicero by its name
 exports.getHechiceroByUser = {
-  auth : {
-    mode: 'required',
-    strategy: 'session',
-    scope: ['hechicero']
-  },
+  auth : false,
   handler : function(request, reply){
     hechicero.findOne({'username' : request.params.username}, function(err, Hechiceros){
       if(!err && Hechiceros){
@@ -57,11 +45,7 @@ exports.getHechiceroByUser = {
 
 //modificar hechicero
 exports.modifyHechicero = {
-  auth : {
-    mode: 'required',
-    strategy: 'session',
-    scope: ['hechicero']
-  },
+  auth : false,
   handler: function(request, reply){
     hechicero.update(
       {'username': request.params.username},
@@ -87,11 +71,7 @@ exports.modifyHechicero = {
 
 //Create a new hechicero
 exports.createHechicero = {
-  auth : {
-    mode: 'required',
-    strategy: 'session',
-    scope: ['hechicero']
-  },
+  auth : false,
   handler: function(request, reply){
     var newHechicero = new hechicero({
       nombre : request.payload.nombre,
